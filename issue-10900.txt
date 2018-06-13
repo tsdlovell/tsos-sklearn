@@ -1,0 +1,31 @@
+# should be inside of scikit-learn dir
+# https://github.com/scikit-learn/scikit-learn/issues/10900
+# https://github.com/scikit-learn/scikit-learn/pull/10982
+
+# check out the state just before the commit
+git checkout e070611^
+# http://scikit-learn.org/stable/developers/contributing.html#how-to-contribute
+git checkout -b my-feature
+git push --set-upstream origin my-feature
+#
+# http://scikit-learn.org/stable/developers/contributing.html#coding-guidelines
+vim +247 sklearn/model_selection/_search.py
+# modify
+./build_tools/travis/flake8_diff.sh
+pytest sklearn/model_selection
+# oops, need to modify the previous test behavior
+vim +1391 sklearn/model_selection/tests/test_search.py
+pytest sklearn/model_selection
+pytest --cov sklearn sklearn/model_selection # no tool to diff with previous values
+# make?
+#
+# when you get clean flake8 and build is fine
+git add --update
+git diff --cached --stat # make sure we didn't add any stray files
+git commit -m 'FIX: Do not enforce that n_iter is less than or equal to size of search space (#10900)
+
+EXPOSITION
+'
+git push
+# https://help.github.com/articles/creating-a-pull-request-from-a-fork/
+# title: [MRG] Fix [RandomizedSearchCV] Do not enforce that n_iter is less than or equal to size of search space
