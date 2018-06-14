@@ -18,7 +18,7 @@ wget https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh && \
 # else at `pip install` you'll see:
 # 	scikit-learn should either be a path to a local project or a VCS url beginning with svn+, git+, hg+, or bzr+
 core="scikit-learn cython"
-test="coverage pyflakes pep8 autopep8 pytest pytest-cov"
+test="coverage pyflakes pep8 pytest pytest-cov"
 doc="sphinx numpydoc matplotlib pillow" # nomkl?
 conda create --yes --name sklearn $core $test $doc && \
 	source activate sklearn && \
