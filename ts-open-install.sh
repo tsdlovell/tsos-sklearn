@@ -28,4 +28,4 @@ conda create --yes --name sklearn $core $test $doc && \
 
 
 cd scikit-learn
-git remote add upstream https:/github.com/scikit-learn/scikit-learn
+git remote add upstream https://github.com/scikit-learn/scikit-learn
