@@ -18,6 +18,7 @@ vim +1391 sklearn/model_selection/tests/test_search.py
 pytest sklearn/model_selection
 pytest --cov sklearn sklearn/model_selection # no tool to diff with previous values
 # make?
+# make doc-nohtml
 #
 # when you get clean flake8 and build is fine
 git add --update
